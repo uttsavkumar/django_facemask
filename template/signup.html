@@ -1,0 +1,170 @@
+{% extends 'base.html' %} {% block 'section'%} {% load static %}
+
+<div class="container mb-5" style="background-color: white">
+  <div class="row">
+    <!-- leftside -->
+    <div class="col-md-6 mx-auto" style="margin-top: 40px">
+      <h1 style="color: #1877f2; font-weight: 700">FaceMask</h1>
+      <h5>
+        Sign up to see photos and videos from your friends. It's quick and easy.
+      </h5>
+      <img src="{%  static 'signup.png' %}" alt="" class="ms-3" srcset="" />
+    </div>
+    <!-- rightside or form side -->
+    <div class="col-md-6 mx-auto">
+      <div class="row">
+        <div class="col-12 mx-auto" style="margin-top: 50px">
+          <h2 style="color: #1877f2; font-weight: 700">SignUp</h2>
+          <div>
+            <hr />
+          </div>
+          <div class="card mt-4">
+            <div
+              class="card-body"
+              style="
+                border: 1px solid rgb(255, 255, 255);
+                border-radius: 10px;
+                box-shadow: 11px 11px 28px gainsboro;
+              "
+            >
+              <form action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <input
+                      name="firstname"
+                      type="text"
+                      style="
+                        caret-color: #1877f2;
+                        height: 48px;
+                        padding: 20px;
+                        font-size: 15.9px;
+                        color: black;
+                      "
+                      placeholder="Enter First name"
+                      class="form-control shadow-sm"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <input
+                      name="lastname"
+                      type="text"
+                      style="
+                        caret-color: #1877f2;
+                        height: 48px;
+                        padding: 20px;
+                        font-size: 15.9px;
+                        color: black;
+                      "
+                      placeholder="Enter Last name"
+                      class="form-control shadow-sm"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="email"
+                    type="text"
+                    style="
+                      caret-color: #1877f2;
+                      height: 48px;
+                      padding: 20px;
+                      font-size: 15.9px;
+                      color: black;
+                    "
+                    placeholder="Enter email address "
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="contact"
+                    type="text"
+                    style="
+                      caret-color: #1877f2;
+                      height: 48px;
+                      padding: 20px;
+                      font-size: 15.9px;
+                      color: black;
+                    "
+                    placeholder="Enter phone number"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <label for="">Date of Birth</label>
+                    <input
+                      name="dob"
+                      type="date"
+                      style="
+                        caret-color: #1877f2;
+                        height: 48px;
+                        padding: 20px;
+                        font-size: 15.9px;
+                        color: black;
+                      "
+                      class="form-control shadow-sm"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <label for="">Gender</label>
+                    <select
+                      name="gender"
+                      style="height: 48px; padding: 13px; font-size: 15.9px"
+                      class="form-select"
+                    >
+                      <option value="null" selected>Select Gender</option>
+                      <option value="Male" id="">Male</option>
+                      <option value="Female" id="">Female</option>
+                      <option value="Other" id="">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="password"
+                    type="password"
+                    style="
+                      caret-color: #1877f2;
+                      height: 48px;
+                      padding: 20px;
+                      font-size: 15.9px;
+                      color: black;
+                    "
+                    placeholder="Enter password"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="submit"
+                    style="
+                      height: 42px;
+                      background: #1877f2;
+                      color: white;
+                      font-size: 19px;
+                      font-weight: 500;
+                    "
+                    value="Create Account"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-2" style="font-size: 16px; font-weight: 400">
+                  <a
+                    href="{% url 'login' %}"
+                    class="text-decoration-none"
+                    style="color: #1877f2"
+                    >Already have an account?</a
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

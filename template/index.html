@@ -1,0 +1,233 @@
+{% extends 'base.html' %} {% block 'section' %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-3">
+  <div class="container">
+    <a href="{% url 'home' %}" class="navbar-brand">FACEMASK</a>
+    <ul class="navbar-nav d-flex flex-row gap-2 align-items-center">
+      {% if user.is_authenticated %}
+      <li class="nav-item mt-2">
+        <p class="h6 text-dark">HI {{user.username}}</p>
+      </li>
+      <li class="nav-item">
+        <button
+          class="btn btn-outline-dark navbar-toggler sidebar_news"
+          onclick="toggleSidebar()"
+        >
+          News
+        </button>
+      </li>
+      <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+      {% else %}
+      <form method="post" action="{% url 'login' %}" class="d-flex gap-2 h-75">
+        {% csrf_token %}
+        <input
+          type="text"
+          placeholder="eg : dhritesh2342"
+          name="username"
+          class="form-control form-control-sm"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="eg : zx8xc8eer9t"
+          class="form-control form-control-sm"
+        />
+        <input type="submit" value="lOGIN" class="btn btn-sm btn-success" />
+      </form>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="home_container">
+  <div class="left">
+    <div class="profile_card">
+      <div class="profile_card_top">
+        <div class="profile_bg">
+          {% if user.accounts.dp %}
+          <img src="{{ user.accounts.dp.url }}" class="profile_img" />
+          {% else %}
+          <img
+            src="https://picsum.photos/seed/picsum/200/300"
+            class="profile_img"
+          />
+          {% endif %}
+        </div>
+        <div class="profile_card_name">
+          <h6>Name : Demo Name</h6>
+          <h6>PROJECT MANAGER</h6>
+        </div>
+        <form
+          action="{% url 'uploaddp' %}"
+          enctype="multipart/form-data"
+          method="post"
+        >
+          {% csrf_token %}
+
+          <label for="upload" class="btn btn-success">Upload</label>
+          <input
+            type="file"
+            name="dp"
+            id="upload"
+            onchange="this.form.submit()"
+            style="display: none"
+            class="btn btn-success"
+          />
+        </form>
+      </div>
+      <!-- <div class="profile_card_bottom"></div> -->
+    </div>
+  </div>
+
+  <div class="middle">
+    <div class="middle_top_container">
+      <!-- <h1>CREATE YOUR POST</h1> -->
+      <div class="sm_caption_container mt-5" style="flex-grow: 1">
+        <!-- <H4 class="sm_caption" ># SHARE IDEAS</H4>
+                <H4 class="sm_caption" ># SHARE NEWS</H4>
+                <H4 class="sm_caption" ># SHARE STORY</H4>
+                <H4 class="sm_caption" ># ...  </H4>
+                <button id="modal_toggler" >Click</button> -->
+        <button
+          id="modal_toggler"
+          type="button"
+          class=""
+          style="
+            border: 1px solid;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #42b72a;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+          "
+        >
+          Add Post
+        </button>
+      </div>
+
+      <div class="create_post_container_close post_modal">
+        <form
+          class="create_post_form"
+          action="{% url 'home' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <input type="text" name="caption" placeholder="Write Caption" id="" />
+          <textarea
+            name="description"
+            placeholder="Write Your Post  "
+            id=""
+          ></textarea>
+          <input name="image" type="file" />
+          <input type="submit" value="CREATE POST" />
+        </form>
+      </div>
+    </div>
+
+    <div class="post_cards_container">
+      {% for p in post %}
+      <div class="post_card">
+        <div class="post_header">
+          {% if p.image %}
+          <img src="{{ p.user.accounts.dp.url }}" />
+
+          {% else %}
+          <img
+            src="https://t4.ftcdn.net/jpg/00/84/67/19/360_F_84671939_jxymoYZO8Oeacc3JRBDE8bSXBWj0ZfA9.jpg"
+          />
+
+          {% endif %}
+          <div class="uploaded_by">
+            <h5>{{ p.user.first_name }} {{ p.user.last_name}}</h5>
+            <h6>Account Executive</h6>
+            <p>{{ p.createAt }}</p>
+          </div>
+        </div>
+
+        <div class="post_caption">
+          {{ p.caption }}
+          <h6 class="text-bold">{{ p.description }}</h6>
+        </div>
+
+        <div class="post_img">
+          <img src="{{ p.image.url }}" />
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="right mt-5">
+    <div class="linkdin_news_container">
+      <h3>Suggested Users</h3>
+      <div class="linkdin_news_item">
+        {% for d in user %}
+        <div>
+          {% comment %} <img src="{{ d.accounts.dp.url }}}" > {% endcomment %}
+          <h6>{{ d.username }}</h6>
+          <p>Lorem sit amet. Lorem ipsum dolor sit amet. ...</p>
+        </div>
+        {% endfor %}
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar active">
+  <h3 class="sidebar-header">NEWS</h3>
+  <div class="linkdin_news_container">
+    <h3>LINKDIN NEWS</h3>
+    <div class="linkdin_news_item">
+      <div>
+        <h6>Intel to build 433 Arizona factory</h6>
+        <p>Lorem sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+      <div>
+        <h6>It is the time for promotion</h6>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+      <div>
+        <h6>Intel to build 433 Arizona factory</h6>
+        <p>Lorem sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+      <div>
+        <h6>It is the time for promotion</h6>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+      <div>
+        <h6>Intel to build 433 Arizona factory</h6>
+        <p>Lorem sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+      <div>
+        <h6>It is the time for promotion</h6>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementsByClassName("post_modal")[0];
+  const btn = document.getElementById("modal_toggler");
+  btn.onclick = (e) => {
+    modal.classList.add("create_post_container_open");
+    modal.classList.remove("create_post_container_close");
+  };
+
+  window.onclick = (e) => {
+    if (e.target === modal) {
+      modal.classList.add("create_post_container_close");
+      modal.classList.remove("create_post_container_open");
+    }
+  };
+
+  function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("active");
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %} {% block 'section' %}
+
+<div class="container mb-5" style="background-color: white">
+  <div class="row">
+    <!-- leftside -->
+    <div class="col-md-6 mx-auto" style="margin-top: 80px">
+      <h1 style="font-size: 58px; color: #1877f2; font-weight: 700">
+        FaceMask
+      </h1>
+      <h4>
+        FaceMask helps you connect and share with the people in your life.
+      </h4>
+    </div>
+    <!-- rightside or form side -->
+    <div class="col-md-6 mx-auto">
+      <div class="row">
+        <div class="col-10 mx-auto" style="margin-top: 50px">
+            <h2 style="color: #1877f2; font-weight: 700">LogIn</h2>
+            <div>
+              <hr />
+            </div>
+          <div class="card mt-4">
+            <div
+              class="card-body"
+              style="
+                border: 1px solid rgb(255, 255, 255);
+                border-radius: 10px;
+                box-shadow: 11px 11px 28px gainsboro;
+              "
+            >
+              <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <input
+                    name="email"
+                    type="email"
+                    style="
+                      caret-color: #1877f2;
+                      height: 48px;
+                      padding: 20px;
+                      font-size: 15.9px;
+                      color: black;
+                    "
+                    placeholder="Enter Email address "
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="password"
+                    type="password"
+                    style="
+                      caret-color: #1877f2;
+                      height: 48px;
+                      padding: 20px;
+                      font-size: 15.9px;
+                      color: black;
+                    "
+                    placeholder="Enter Password"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="submit"
+                    style="
+                      height: 42px;
+                      background: #1877f2;
+                      color: white;
+                      font-size: 19px;
+                      font-weight: 500;
+                    "
+                    value="Log in"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="mb-2" style="text-align: center; font-size: 14px">
+                  <a href="" class="text-decoration-none" style="color: #1877f2"
+                    >Forgotten Password?</a
+                  >
+                </div>
+              </form>
+              <div>
+                <hr />
+              </div>
+              <div class="mb-4 mt-4" style="text-align: center">
+                <a
+                  href="{% url 'signup' %}"
+                  class="text-decoration-none"
+                  style="
+                    border: 1px solid;
+                    padding: 12px;
+                    border-radius: 5px;
+                    background-color: #42b72a;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 16.5px;
+                  "
+                  >Create new account</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

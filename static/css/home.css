@@ -1,0 +1,355 @@
+.home_container {
+    min-width: inherit;
+    min-height: inherit;
+    display: grid;
+    grid-template-columns: .8fr 2fr 1fr;
+    grid-auto-rows: min-content;
+    gap: 10px;
+    background-color: hsl(48deg 17% 94%);
+}
+
+.left {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.profile_card {
+    background-color: white;
+    padding:5px ;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.profile_card_top {
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.profile_card_top .profile_bg {
+    height: 100px;
+    width: 100%;
+    background:url(https://thumbs.gfycat.com/TestyDisloyalChinchilla-size_restricted.gif);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.profile_card_name {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile_img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:50px;
+}
+
+.profile_card_bottom {
+    
+}
+
+.middle {
+    padding: 10px;
+}
+
+.middle_top_container{
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.create_post_container_open{
+    width: 100vw;
+    z-index: 9999;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(36, 36, 36, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create_post_container_close {
+    display: none;
+}
+
+.sm_caption_container{
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+.sm_caption {
+    padding:5px;
+    background-color: aqua;
+    width: max-content;
+}
+
+.create_post_form{
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+    min-width: 400px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.create_post_form textarea:focus , .create_post_form input:focus {
+    outline: none;
+}
+
+.create_post_form input[type=submit]  {
+    outline: none;
+    background-color: black;
+    color: white;
+}
+
+.post_cards_container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 5px;
+}
+
+.post_card {
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.post_header {
+    display: flex;
+    column-gap: 10px;
+}
+
+.post_header img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.post_header .uploaded_by {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.uploaded_by h5 , 
+.uploaded_by h6 , 
+.uploaded_by p  {
+    margin-bottom: -3px;
+}
+
+.post_caption {
+    padding: 10px;
+    font-size: 17px;
+}
+
+.post_img {
+    padding: 10px;
+}
+
+.post_img img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    border: 5px solid hsl(48deg 17% 94%);
+}
+
+
+
+
+
+
+
+
+
+
+.right {
+    padding: 10px;    
+}
+
+.linkdin_news_container {
+    background-color: white;
+    padding: 10px;
+}
+
+.linkdin_news_item {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    /* margin-bottom: -20px; */
+}
+
+.linkdin_news_item h6 {
+    margin-bottom: -3px;
+}
+
+.linkdin_news_item h6::before {
+    content: " • ";
+    font-size: 25px;
+    color: rgb(17, 63, 163);
+}
+
+
+
+.sidebar_news {
+    display: none;
+}
+
+
+
+
+@media (max-width : 1080px) {
+    .home_container {
+        grid-template-columns: 1fr 2fr 1fr;
+        /* grid-template-rows: min-content; */
+    }
+    
+}
+
+@media (max-width : 1000px) {
+    .home_container {
+        grid-template-columns: 1fr 2fr;
+        /* grid-template-rows:auto; */
+    }
+    .right {
+        display: none;
+    }
+
+    .sidebar_news {
+        display: block;
+    }
+}
+
+@media (max-width : 600px) {
+    .home_container {
+        grid-template-columns: 1fr;
+        /* grid-template-rows: min-content; */
+    }
+}
+
+
+
+
+
+
+
+
+/* sidebar */
+.sidebar.active {
+    right: -500px;
+  }
+.sidebar {
+    background-color: white;
+    width: 400px;
+    height: 100%;
+    padding: auto;
+    position: fixed;
+    right: 0;
+    top: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom :200px
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+}
+
+.sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+
+
+
+
+/* toggle form button */
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
